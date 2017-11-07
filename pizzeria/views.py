@@ -51,6 +51,18 @@ def pizza_remove(request, pk):
     pizza.delete()
     return redirect('pizza_lista')
 
+def pizza_editar(request, pk):
+    pizza = get_object_or_404(Pizza, pk=pk)
+    if request.method == "POST":
+        formulario = PizzaForm(request.POST, instance=pizza)
+        if formulario.is_valid():
+            pizza = formulario.save(commit=False)
+            pizza.save()
+        return redirect('pizza_lista')
+    else:
+        formulario = PizzaForm(instance=pizza)
+    return render(request, 'pizzeria/pizza_editar.html', {'formulario': formulario})
+
 @login_required
 def ingrediente_nuevo(request):
     if request.method == "POST":

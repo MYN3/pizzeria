@@ -6,6 +6,7 @@
         <h1>{{ pizza.nombre}}</h1>
         {% if user.is_authenticated %}
         <a class="btn btn-default" href="{% url 'pizza_remove' pk=pizza.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn btn-default" href="{% url 'pizza_editar' pk=pizza.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
         <p>Precio: Q{{ pizza.tamano }}.00</p>
 
