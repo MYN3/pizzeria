@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .forms import PizzaForm, IngredienteForm
 from pizzeria.models import Pizza, Preparacion, Ingrediente
+from django.contrib.auth.decorators import login_required
 
 def pizza_nueva(request):
 
@@ -36,6 +37,7 @@ def pizza_lista(request):
     pizzas = Pizza.objects.all()
     return render(request, 'pizzeria/pizza_lista.html', {'pizzas':pizzas})
 
+@login_required
 def ingrediente_lista(request):
     ingrediente = Ingrediente.objects.all()
     return render(request, 'pizzeria/ingrediente_lista.html', {'ingrediente':ingrediente})
@@ -44,6 +46,12 @@ def pizza_detail(request, pk):
     pizza = get_object_or_404(Pizza, pk=pk)
     return render(request, 'pizzeria/pizza_detail.html', {'pizza': pizza})
 
+def pizza_remove(request, pk):
+    pizza = get_object_or_404(Pizza, pk=pk)
+    pizza.delete()
+    return redirect('pizza_lista')
+
+@login_required
 def ingrediente_nuevo(request):
     if request.method == "POST":
         formulario = IngredienteForm(request.POST)

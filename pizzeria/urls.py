@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^pizza/nueva/$', views.pizza_nueva, name='pizza_nueva'),
     url(r'^ingrediente/lista/$', views.ingrediente_lista, name='ingrediente_lista'),
     url(r'^ingrediente/nuevo/$', views.ingrediente_nuevo, name='ingrediente_nuevo'),
+    url(r'^pizza/(?P<pk>[0-9]+)/remove/$', views.pizza_remove, name='pizza_remove'),
     ]
