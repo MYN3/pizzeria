@@ -1,0 +1,9 @@
+{% extends 'pizzeria/base2.html' %}
+
+    {% block pizzan %}
+        <h1>Nueva Pizza</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit" class="save btn btn-default">Guardar</button>
+        </form>
+    {% endblock %}

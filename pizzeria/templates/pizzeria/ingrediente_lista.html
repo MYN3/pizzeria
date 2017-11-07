@@ -1,0 +1,15 @@
+{% extends 'pizzeria/base.html' %}
+
+{% block contents %}
+
+
+
+{% for prod in ingrediente %}
+
+<h1>{{ prod.nombre }}</a></h1>
+<div class="text-detail">
+<h5>Cantidad: {{ prod.cantidad }}</h5>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

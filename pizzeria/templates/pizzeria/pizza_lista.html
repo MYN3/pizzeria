@@ -1,0 +1,15 @@
+{% extends 'pizzeria/base.html' %}
+
+{% block contents %}
+
+
+
+{% for prod in pizzas %}
+
+<h1><a href="{% url 'pizza_detail' pk=prod.pk %}">{{ prod.nombre }}</a></h1>
+<div class="text-detail">
+<h5>tamaño: {{ prod.tamano }}</h5>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
